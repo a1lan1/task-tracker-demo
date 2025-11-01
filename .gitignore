@@ -26,3 +26,11 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php
+/storage/rector
+/coverage
+coverage.xml
+tests/Browser/Screenshots
+tests/.pest/snapshots
