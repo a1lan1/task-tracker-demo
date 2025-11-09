@@ -16,6 +16,7 @@
         "laravel/horizon": "^5.38",
         "laravel/tinker": "^2.10.1",
         "laravel/wayfinder": "^0.1.9",
+        "mateusjunges/laravel-kafka": "^2.9",
         "predis/predis": "^3.2"
     },
     "require-dev": {
