@@ -9,5 +9,6 @@
         "phpstorm",
         "vscode"
     ],
-    "guidelines": []
+    "guidelines": [],
+    "sail": true
 }
