@@ -1,9 +1,11 @@
 import type { App } from 'vue'
+import axios from './axios'
 import pinia from './pinia'
 import vuetify from './vuetify'
 
 export function registerPlugins(app: App) {
   app
     .use(pinia)
+    .use(axios)
     .use(vuetify)
 }
