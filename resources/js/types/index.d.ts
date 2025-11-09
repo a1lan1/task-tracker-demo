@@ -1,13 +1,13 @@
-import { InertiaLinkProps } from '@inertiajs/vue3';
-import type { LucideIcon } from 'lucide-vue-next';
+import { InertiaLinkProps } from '@inertiajs/vue3'
+import type { LucideIcon } from 'lucide-vue-next'
 
 export interface Auth {
     user: User;
 }
 
 export interface BreadcrumbItem {
-    title: string;
-    href: string;
+  title: string
+  href?: string
 }
 
 export interface NavItem {
@@ -35,5 +35,3 @@ export interface User {
     created_at: string;
     updated_at: string;
 }
-
-export type BreadcrumbItemType = BreadcrumbItem;
