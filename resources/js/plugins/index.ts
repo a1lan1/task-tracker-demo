@@ -3,6 +3,7 @@ import axios from './axios'
 import pinia from './pinia'
 import vuetify from './vuetify'
 import snackbar from './snackbar'
+import './echo'
 
 export function registerPlugins(app: App) {
   app
