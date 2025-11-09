@@ -20,6 +20,7 @@
         "mateusjunges/laravel-kafka": "^2.9",
         "opcodesio/log-viewer": "^3.21",
         "predis/predis": "^3.2",
+        "spatie/laravel-data": "^4.18",
         "spatie/laravel-medialibrary": "^11.17"
     },
     "require-dev": {
