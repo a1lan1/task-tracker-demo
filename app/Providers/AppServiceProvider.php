@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Contracts\Services\CommentServiceInterface;
 use App\Contracts\Services\ProjectServiceInterface;
 use App\Contracts\Services\TaskServiceInterface;
+use App\Services\CommentService;
 use App\Services\ProjectService;
 use App\Services\TaskService;
 use Carbon\CarbonImmutable;
@@ -29,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(ProjectServiceInterface::class, ProjectService::class);
         $this->app->bind(TaskServiceInterface::class, TaskService::class);
+        $this->app->bind(CommentServiceInterface::class, CommentService::class);
     }
 
     /**
