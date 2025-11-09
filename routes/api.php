@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CommentApiController;
 use App\Http\Controllers\Api\ProjectApiController;
 use App\Http\Controllers\Api\TaskApiController;
 use Illuminate\Support\Facades\Route;
@@ -14,4 +15,8 @@ Route::prefix('api')->middleware(['auth', 'verified'])->group(function (): void 
     Route::apiResource('tasks', TaskApiController::class)->except(['index']);
     Route::get('projects/{project}/tasks', [TaskApiController::class, 'index'])->name('api.projects.tasks.index');
     Route::patch('tasks/status/{task}', [TaskApiController::class, 'updateStatus'])->name('api.tasks.updateStatus');
+
+    // Comments
+    Route::get('tasks/{task}/comments', [CommentApiController::class, 'index'])->name('api.tasks.comments.index');
+    Route::post('tasks/{task}/comments', [CommentApiController::class, 'store'])->name('api.tasks.comments.store');
 });
