@@ -9,7 +9,9 @@ use Carbon\CarbonImmutable;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\DatabaseNotification;
@@ -36,10 +38,16 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property string|null $two_factor_recovery_codes
  * @property CarbonImmutable|null $two_factor_confirmed_at
  * @property-read string $avatar
+ * @property-read Collection<int, Comment> $comments
+ * @property-read int|null $comments_count
  * @property-read MediaCollection<int, Media> $media
  * @property-read int|null $media_count
  * @property-read DatabaseNotificationCollection<int, DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
+ * @property-read Collection<int, Project> $projects
+ * @property-read int|null $projects_count
+ * @property-read Collection<int, Task> $tasks
+ * @property-read int|null $tasks_count
  *
  * @method static UserFactory factory($count = null, $state = [])
  * @method static Builder<static>|User newModelQuery()
@@ -108,6 +116,21 @@ class User extends Authenticatable implements HasMedia
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
         ];
+    }
+
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class, 'owner_id');
+    }
+
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(Task::class, 'assignee_id');
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
     }
 
     public function registerMediaConversions(?Media $media = null): void
