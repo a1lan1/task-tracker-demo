@@ -77,17 +77,20 @@ const submit = async() => {
         <v-text-field
           v-model="newTask.title"
           label="Task title"
+          name="title"
           :error-messages="errors.title"
         />
         <v-textarea
           v-model="newTask.description"
           label="Task description"
+          name="description"
           :error-messages="errors.description"
         />
         <v-select
           v-model="newTask.status"
           :items="statusOptions"
           label="Status"
+          name="status"
           item-title="title"
           item-value="value"
           :error-messages="errors.status"
@@ -96,6 +99,7 @@ const submit = async() => {
           v-model="newTask.assignee_id"
           :items="members"
           label="Assignee"
+          name="assignee_id"
           item-title="name"
           item-value="id"
           clearable

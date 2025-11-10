@@ -52,11 +52,13 @@ const submit = async() => {
         <v-text-field
           v-model="newProject.name"
           label="Project name"
+          name="name"
           :error-messages="errors.name"
         />
         <v-textarea
           v-model="newProject.description"
           label="Project description"
+          name="description"
           :error-messages="errors.description"
         />
       </v-card-text>

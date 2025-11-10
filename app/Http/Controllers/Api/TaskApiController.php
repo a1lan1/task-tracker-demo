@@ -88,7 +88,7 @@ class TaskApiController extends Controller
         $this->taskService->updateTask($task, $request->validated());
 
         return response()->json(
-            $task->refresh()
+            $task->fresh()
         );
     }
 

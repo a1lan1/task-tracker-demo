@@ -26,7 +26,7 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__.'/database',
         __DIR__.'/resources',
         __DIR__.'/routes',
-        // __DIR__.'/tests',
+        __DIR__.'/tests',
     ]);
 
     // Enable caching for Rector

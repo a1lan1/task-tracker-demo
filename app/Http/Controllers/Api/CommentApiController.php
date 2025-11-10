@@ -12,7 +12,6 @@ use App\Http\Requests\Comment\StoreCommentRequest;
 use App\Http\Resources\CommentResource;
 use App\Models\Task;
 use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CommentApiController extends Controller
@@ -34,11 +33,11 @@ class CommentApiController extends Controller
     /**
      * @throws AuthorizationException
      */
-    public function store(StoreCommentRequest $request, Task $task, CreateTaskComment $createTaskComment): JsonResponse
+    public function store(StoreCommentRequest $request, Task $task, CreateTaskComment $createTaskComment): CommentResource
     {
         $this->authorize('comment', $task);
 
-        $createTaskComment->handle(
+        $comment = $createTaskComment->handle(
             $task,
             new CommentData(
                 task_id: $task->id,
@@ -47,6 +46,6 @@ class CommentApiController extends Controller
             )
         );
 
-        return response()->json([], 201);
+        return new CommentResource($comment);
     }
 }

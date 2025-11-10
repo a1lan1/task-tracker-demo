@@ -61,8 +61,10 @@ class ProjectApiController extends Controller
     {
         $this->authorize('update', $project);
 
+        $this->projectService->updateProject($project, $request->validated());
+
         return response()->json(
-            $this->projectService->updateProject($project, $request->validated())
+            $project->fresh()
         );
     }
 
