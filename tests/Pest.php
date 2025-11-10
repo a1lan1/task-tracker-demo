@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -11,9 +14,22 @@
 |
 */
 
-pest()->extend(Tests\TestCase::class)
- // ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
+pest()->extend(TestCase::class)
+    ->use(RefreshDatabase::class)
+    ->group('feature')
     ->in('Feature');
+
+pest()->extend(TestCase::class)
+    ->use(RefreshDatabase::class)
+    ->group('browser')
+    ->in('Browser');
+
+pest()->extend(TestCase::class)
+    ->use(RefreshDatabase::class)
+    ->group('unit')
+    ->in('Unit');
+
+pest()->browser()->inChrome();
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +57,7 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function something(): void
 {
     // ..
 }
