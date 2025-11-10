@@ -28,7 +28,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read int|null $comments_count
  * @property-read Project $project
  *
+ * @method static Builder<static>|Task completed()
  * @method static TaskFactory factory($count = null, $state = [])
+ * @method static Builder<static>|Task inProgress()
  * @method static Builder<static>|Task newModelQuery()
  * @method static Builder<static>|Task newQuery()
  * @method static Builder<static>|Task query()
@@ -61,6 +63,16 @@ class Task extends Model
         return [
             'status' => TaskStatus::class,
         ];
+    }
+
+    protected function scopeCompleted(Builder $query): void
+    {
+        $query->where('status', TaskStatus::Done);
+    }
+
+    protected function scopeInProgress(Builder $query): void
+    {
+        $query->where('status', TaskStatus::InProgress);
     }
 
     public function project(): BelongsTo
